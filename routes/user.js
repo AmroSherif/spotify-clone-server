@@ -2,7 +2,6 @@ const router = require("express").Router();
 const admin = require("../middleware/admin");
 const auth = require("../middleware/auth");
 const validateObjectId = require("../middleware/validateObjectId");
-
 const {
   createUser,
   getUsers,

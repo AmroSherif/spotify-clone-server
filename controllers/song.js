@@ -4,8 +4,11 @@ const { Song, validate } = require("../models/song");
 const createSong = async (req, res) => {
   const { error } = validate(req.body);
   if (error) res.status(400).send({ message: error.details[0].message });
-
-  const song = await Song(req.body).save();
+  const song = await Song(req.body);
+  if (req.file) {
+    song.audio = req.file.path;
+  }
+  song.save();
   res.status(201).send({ data: song, message: "Song created successfully" });
 };
 
@@ -51,6 +54,21 @@ const getLikedSongs = async (req, res) => {
   res.status(200).send({ data: songs });
 };
 
+const getSong = async (req, res) => {
+  const dir = __dirname.replace("/controllers", "");
+  let song;
+  if (req.params.id) song = await Song.findById(req.params.id);
+  else {
+    song = await Song.find();
+    song = song[parseInt(Math.random() * song.length)];
+  }
+  if (!song) return res.status(400).json({ message: "invalid song id" });
+  const user = await User.findById(req.user._id);
+  user.recentSongs.push(song._id);
+  user.save();
+  res.sendFile(song.audio, { root: dir });
+};
+
 module.exports = {
   createSong,
   getSongs,
@@ -58,4 +76,5 @@ module.exports = {
   deleteSong,
   likeSong,
   getLikedSongs,
+  getSong,
 };

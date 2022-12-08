@@ -22,7 +22,7 @@ app.use("/api/", searchRoutes);
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
-    app.listen(port, () =>
+    app.listen(process.env.PORT, () =>
       console.log(`Listening on port ${process.env.PORT}...`)
     );
   })

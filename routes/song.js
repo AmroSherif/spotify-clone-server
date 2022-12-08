@@ -9,10 +9,13 @@ const {
   deleteSong,
   likeSong,
   getLikedSongs,
+  getSong,
 } = require("../controllers/song");
+const uploadAudio = require("../middleware/uploadAudio");
+const premium = require("../middleware/Premium");
 
 // Create song
-router.post("/", admin, createSong);
+router.post("/", [admin, uploadAudio.single("audio")], createSong);
 
 // Get all songs
 router.get("/", getSongs);
@@ -28,5 +31,8 @@ router.put("/like/:id", [validateObjectId, auth], likeSong);
 
 // Get liked songs
 router.get("/like", auth, getLikedSongs);
+
+// Play song
+router.get("/:id", [validateObjectId, auth, premium], getSong);
 
 module.exports = router;

@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
   playlists: { type: [String], default: [] },
   recentSongs: { type: [String], default: [] },
   isAdmin: { type: Boolean, default: false },
+  isPremium: { type: Boolean, default: false },
 });
 
 userSchema.methods.generateAuthToken = function () {
