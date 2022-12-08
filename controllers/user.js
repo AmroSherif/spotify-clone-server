@@ -25,6 +25,34 @@ const createUser = async (req, res) => {
     .send({ data: newUser, message: "Account created successfully" });
 };
 
+const getUsers = async (req, res) => {
+  const users = await User.find().select("-password -__v");
+  res.status(200).send({ data: users });
+};
+
+const getUser = async (req, res) => {
+  const user = await User.findById(req.params.id).select("-password -__v");
+  res.status(200).send({ data: user });
+};
+
+const updateUser = async (req, res) => {
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { $set: req.body },
+    { new: true }
+  ).select("-password -__v");
+  res.status(200).send({ data: user, message: "Profile updated successfully" });
+};
+
+const deleteUser = async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.status(200).send({ message: "Successfully deleted user." });
+};
+
 module.exports = {
   createUser,
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
 };
