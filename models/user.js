@@ -16,6 +16,8 @@ const userSchema = new mongoose.Schema({
   recentSongs: { type: [String], default: [] },
   isAdmin: { type: Boolean, default: false },
   isPremium: { type: Boolean, default: false },
+  isArtist: { type: Boolean, default: false },
+  artistSongs: { type: [mongoose.Schema.Types.ObjectId], default: [] },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -36,6 +38,7 @@ const validate = (user) => {
     date: Joi.string().required(),
     year: Joi.string().required(),
     gender: Joi.string().valid("male", "female").required(),
+    isArtist: Joi.boolean().required(),
   });
   return schema.validate(user);
 };
