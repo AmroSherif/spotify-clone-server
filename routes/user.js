@@ -8,6 +8,7 @@ const {
   getUser,
   updateUser,
   deleteUser,
+  getStatiscs,
 } = require("../controllers/user");
 
 // create user
@@ -24,5 +25,8 @@ router.put("/:id", [validateObjectId, auth], updateUser);
 
 // delete user by id
 router.delete("/:id", [validateObjectId, admin], deleteUser);
+
+// get statiscs on users
+router.get("/show/statistics", admin, getStatiscs);
 
 module.exports = router;

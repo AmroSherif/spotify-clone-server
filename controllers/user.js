@@ -1,4 +1,6 @@
 const { User, validate } = require("../models/user");
+const { Song } = require("../models/song");
+const { PlayList } = require("../models/playList");
 const bcrypt = require("bcrypt");
 
 const createUser = async (req, res) => {
@@ -49,10 +51,22 @@ const deleteUser = async (req, res) => {
   res.status(200).send({ message: "Successfully deleted user." });
 };
 
+const getStatiscs = async (req, res) => {
+  const users = await User.find();
+  const songs = await Song.find();
+  const playlist = await PlayList.find();
+  res.status(200).send({
+    "Users Count": users.length,
+    "Song Count": songs.length,
+    "Playlist Count": playlist.length,
+  });
+};
+
 module.exports = {
   createUser,
   getUsers,
   getUser,
   updateUser,
   deleteUser,
+  getStatiscs,
 };
