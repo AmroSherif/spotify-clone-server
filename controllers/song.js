@@ -8,7 +8,11 @@ const createSong = async (req, res) => {
   if (req.file) {
     song.audio = req.file.path;
   }
+  song.artist = req.user._id;
+  const user = await User.findById(req.user._id);
   song.save();
+  user.artistSongs.push(song._id);
+  user.save();
   res.status(201).send({ data: song, message: "Song created successfully" });
 };
 
@@ -21,6 +25,7 @@ const updateSong = async (req, res) => {
   const song = await Song.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
+  console.log("Just for debugging");
   res.send({ data: song, message: "Updated song successfully" });
 };
 
