@@ -76,6 +76,11 @@ const getSong = async (req, res) => {
   res.sendFile(song.audio, { root: dir });
 };
 
+const getRecentPlays = async (req, res) => {
+  const user = await User.findById(req.user._id);
+  res.status(200).send(user.recentSongs);
+};
+
 module.exports = {
   createSong,
   getSongs,
@@ -84,4 +89,5 @@ module.exports = {
   likeSong,
   getLikedSongs,
   getSong,
+  getRecentPlays,
 };

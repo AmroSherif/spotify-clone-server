@@ -11,6 +11,7 @@ const {
   likeSong,
   getLikedSongs,
   getSong,
+  getRecentPlays,
 } = require("../controllers/song");
 const uploadAudio = require("../middleware/uploadAudio");
 const premium = require("../middleware/Premium");
@@ -24,7 +25,7 @@ router.post(
 );
 
 // Get all songs
-router.get("/", getSongs);
+router.get("/", auth, getSongs);
 
 // Update song
 router.put("/:id", [auth, validateObjectId, artist], updateSong);
@@ -40,5 +41,8 @@ router.get("/like", auth, getLikedSongs);
 
 // Play song
 router.get("/:id", [validateObjectId, auth, premium], getSong);
+
+// Get recent played songs
+router.get("/history/all", auth, getRecentPlays);
 
 module.exports = router;
