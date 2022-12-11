@@ -25,12 +25,14 @@ const updateSong = async (req, res) => {
   const song = await Song.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  console.log("Just for debugging");
   res.send({ data: song, message: "Updated song successfully" });
 };
 
 const deleteSong = async (req, res) => {
-  await Song.findByIdAndDelete(req.params.id);
+  const song = await Song.findByIdAndDelete(req.params.id);
+  const user = await User.findById(req.user._id);
+  user.artistSongs.splice(user.artistSongs.indexOf(song._id), 1);
+  user.save();
   res.status(200).send({ message: "Song deleted sucessfully" });
 };
 
