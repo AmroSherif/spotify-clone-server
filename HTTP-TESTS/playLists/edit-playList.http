@@ -1,5 +1,5 @@
 # User test@gmail.com
-POST http://127.0.0.1:8000/api/playlists HTTP/1.1
+PUT http://127.0.0.1:8000/api/playlists/edit/6395fe4212dfe42e41af2847 HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZjNlYmUyMzQzM2RhZjE0YzYwYjgiLCJuYW1lIjoidGVzdCB1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3MDc3NDI3NSwiZXhwIjoxNjcxMzc5MDc1fQ.jeDHRIBKhSQPVPIGl9SbUN7wmFmCeCON2xFLVnVO0eM
 content-type: application/json
 

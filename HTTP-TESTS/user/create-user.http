@@ -1,0 +1,13 @@
+POST http://192.168.193.241:8000/api/users HTTP/1.1
+content-type: application/json
+
+{
+"name":"Kareem",
+"email":"KareemKimo@gmail.com",
+"password":"M@ng0Banana",
+"month":"jan",
+"date":"sat",
+"year":"2001",
+"gender":"male",
+"isArtist": false
+}
