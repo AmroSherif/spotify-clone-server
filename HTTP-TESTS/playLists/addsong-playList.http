@@ -1,9 +1,10 @@
-# User test@gmail.com
-POST http://127.0.0.1:8000/api/playlists HTTP/1.1
+# User test@gmail.com add song id 6391d2cb6b3b1a1aaff0b23a to playlist
+PUT http://127.0.0.1:8000/api/playlists/add-song HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZjNlYmUyMzQzM2RhZjE0YzYwYjgiLCJuYW1lIjoidGVzdCB1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3MDc3NDI3NSwiZXhwIjoxNjcxMzc5MDc1fQ.jeDHRIBKhSQPVPIGl9SbUN7wmFmCeCON2xFLVnVO0eM
 content-type: application/json
 
 
 {
-"name":"Normal User Playlist"
+"playlistId":"6395fe4212dfe42e41af2847",
+"songId":"6391d2cb6b3b1a1aaff0b23a"
 }

@@ -1,9 +1,4 @@
 # User test@gmail.com
-POST http://127.0.0.1:8000/api/playlists HTTP/1.1
+GET http://127.0.0.1:8000/api/playlists/favourite HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZjNlYmUyMzQzM2RhZjE0YzYwYjgiLCJuYW1lIjoidGVzdCB1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3MDc3NDI3NSwiZXhwIjoxNjcxMzc5MDc1fQ.jeDHRIBKhSQPVPIGl9SbUN7wmFmCeCON2xFLVnVO0eM
-content-type: application/json
 
-
-{
-"name":"Normal User Playlist"
-}

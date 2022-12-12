@@ -1,14 +1,2 @@
-POST http://127.0.0.1:8000/api/songs HTTP/1.1
+DELETE http://127.0.0.1:8000/api/songs/639630f65bc94e3e968fb7fc HTTP/1.1
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk1ZjNlYmUyMzQzM2RhZjE0YzYwYjgiLCJuYW1lIjoidGVzdCB1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3MDc4MTMyOSwiZXhwIjoxNjcxMzg2MTI5fQ.9RW-tzLlKK9ZVu0AkJCf5ZokiXvlK5Go_26cXJLu6Fg
-content-type: application/json
-
-{
-
-"name": "Weeknd Sooooong",
-"artist":"kimo",
-"song":"kkk",
-"img": "www.img.com/img",
-"duration": "69",
-"audio":"uploads/1670501067515.mp3"
-
-}

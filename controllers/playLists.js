@@ -101,6 +101,7 @@ const getPlaylist = async (req, res) => {
 
 const getAllPlaylists = async (req, res) => {
   const playlists = await PlayList.find();
+
   res.status(200).send({ data: playlists });
 };
 
